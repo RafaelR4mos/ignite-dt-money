@@ -27,6 +27,10 @@ export const TransactionTable = styled.table`
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
     }
+
+    &:nth-child(3) {
+      text-transform: capitalize;
+    }
   }
 `;
 

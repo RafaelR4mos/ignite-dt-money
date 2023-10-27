@@ -22,7 +22,7 @@
       "type": "outcome",
       "category": "Alimentação",
       "price": 40,
-      "createdAt": "2023-10-27T14:15:22.040Z"
+      "createdAt": "2023-10-25T14:15:22.040Z"
     },
     {
       "id": 4,
@@ -30,7 +30,7 @@
       "type": "outcome",
       "category": "Alimentação",
       "price": 5,
-      "createdAt": "2023-10-27T14:30:45.040Z"
+      "createdAt": "2023-10-26T14:30:45.040Z"
     },
     {
       "id": 5,
@@ -38,7 +38,23 @@
       "type": "outcome",
       "category": "Alimentação",
       "price": 15,
-      "createdAt": "2023-10-27T14:45:58.040Z"
+      "createdAt": "2023-10-26T14:45:58.040Z"
+    },
+    {
+      "description": "Desenvolvimento de app",
+      "price": 8000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2023-10-27T18:42:59.932Z",
+      "id": 6
+    },
+    {
+      "description": "Açaí",
+      "price": 12,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2023-10-27T18:45:19.104Z",
+      "id": 7
     }
   ]
 }
