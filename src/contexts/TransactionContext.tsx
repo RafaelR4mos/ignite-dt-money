@@ -1,61 +1,61 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
-import { api } from "../lib/api";
+import { ReactNode, createContext, useEffect, useState } from 'react'
+import { api } from '../lib/api'
 
 interface ITransaction {
-  id: number;
-  description: string;
-  type: "income" | "outcome";
-  category: string;
-  price: number;
-  createdAt: string;
+  id: number
+  description: string
+  type: 'income' | 'outcome'
+  category: string
+  price: number
+  createdAt: string
 }
 
 interface CreateTransactionInput {
-  description: string;
-  price: number;
-  category: string;
-  type: "income" | "outcome";
+  description: string
+  price: number
+  category: string
+  type: 'income' | 'outcome'
 }
 
 interface TransactionsContextType {
-  transactions: ITransaction[];
-  fetchTransactions: (query?: string) => Promise<void>;
-  createNewTransaction: (data: CreateTransactionInput) => Promise<void>;
+  transactions: ITransaction[]
+  fetchTransactions: (query?: string) => Promise<void>
+  createNewTransaction: (data: CreateTransactionInput) => Promise<void>
 }
 
 interface TransactionProviderProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-export const TransactionsContext = createContext({} as TransactionsContextType);
+export const TransactionsContext = createContext({} as TransactionsContextType)
 
 export function TransactionsProvider({ children }: TransactionProviderProps) {
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [transactions, setTransactions] = useState<ITransaction[]>([])
 
   async function fetchTransactions(query?: string) {
-    const response = await api.get("transactions", {
+    const response = await api.get('transactions', {
       params: {
-        _sort: "createdAt",
-        _order: "desc",
+        _sort: 'createdAt',
+        _order: 'desc',
         q: query,
       },
-    });
+    })
 
-    setTransactions(response.data);
+    setTransactions(response.data)
   }
 
   async function createNewTransaction(data: CreateTransactionInput) {
-    const response = await api.post("transactions", {
+    const response = await api.post('transactions', {
       ...data,
       createdAt: new Date(),
-    });
+    })
 
-    setTransactions((state) => [response.data, ...state]);
+    setTransactions((state) => [response.data, ...state])
   }
 
   useEffect(() => {
-    fetchTransactions();
-  }, []);
+    fetchTransactions()
+  }, [])
 
   return (
     <TransactionsContext.Provider
@@ -63,5 +63,5 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
     >
       {children}
     </TransactionsContext.Provider>
-  );
+  )
 }
